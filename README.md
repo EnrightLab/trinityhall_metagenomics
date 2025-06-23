@@ -1,10 +1,16 @@
 ## Dana Bao - Summer Research GitHub Repository
 
-Test
+Nanopore Chuckling Goat Analysis
 
-Test
+The fastq file was obtained directly from the PromethION computer. 
+Given the number of files, the fastq files are decompressed, combined and recompressed into 4 barcode files using:
 
-Test
+```
+gunzip -c  *fastq.gz | gzip -c > ~/Desktop/FASTQ/barcode1.fastq.gz &
+gunzip -c  *fastq.gz | gzip -c > ~/Desktop/FASTQ/barcode2.fastq.gz &
+gunzip -c  *fastq.gz | gzip -c > ~/Desktop/FASTQ/barcode3.fastq.gz &
+gunzip -c  *fastq.gz | gzip -c > ~/Desktop/FASTQ/barcode4.fastq.gz &
+```
 
 * List 
 * List 
