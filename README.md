@@ -22,11 +22,11 @@ kraken2 --db kraken_db --gzip-compressed --threads 20 --output barcode0X.kraken.
 ```
 where X represents the number for the combined fastq file.
 
-* `--db gtdb` or `--db kraken_db` Use database gtdb/core_nt, which contains microbial sequences/full NCBI's database sequences
-* `--gzip-compressed` Input reads are in gzip file
-* `--threads 20` Use 20 cpus per job
-* `--report` Return a summary report
-* `--confidence 0.5` Threshold for fraction of k-mers supporting the classification, otherwise considered unclassified
+* `--db gtdb` or `--db kraken_db`: Use database gtdb/core_nt, which contains microbial sequences/full NCBI's database sequences
+* `--gzip-compressed`: Input reads are in gzip file
+* `--threads 20`: Use 20 cpus per job
+* `--report`: Return a summary report
+* `--confidence 0.5`: Threshold for fraction of k-mers supporting the classification, otherwise considered unclassified
 
 The adapters were removed with super accuracy using raw signal on the PromethION computer.
 
