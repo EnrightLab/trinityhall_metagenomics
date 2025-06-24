@@ -12,14 +12,17 @@ cat barcode03/*.fastq.gz > barcode3.fastq.gz
 cat barcode04/*.fastq.gz > barcode4.fastq.gz
 ```
 
-Kraken2 was then used to map the nanopore reads against gtdb database.
+Kraken2 was then used to map the nanopore reads against gtdb and core_nt database.
 
 ```
 kraken2 --db gtdb --gzip-compressed --threads 20 --output barcode0X.kraken.out --report barcode0X.kraken.report.txt --confidence 0.5 barcodeX.fastq.gz
 ```
+```
+kraken2 --db kraken_db --gzip-compressed --threads 20 --output barcode0X.kraken.out --report barcode0X.kraken.report.txt --confidence 0.5 barcodeX.fastq.gz
+```
 where X represents the number for the combined fastq file.
 
-* `--db gtdb` Use database gtdb, which contains microbial sequences
+* `--db gtdb` or `--db kraken_db` Use database gtdb/core_nt, which contains microbial sequences/full NCBI's database sequences
 * `--gzip-compressed` Input reads are in gzip file
 * `--threads 20` Use 20 cpus per job
 * `--report` Return a summary report
