@@ -27,7 +27,7 @@ where X represents the number for the combined fastq file.
 
 The adapters were removed with super accuracy using raw signal on the PromethION computer.
 
-In addition, porechop was used to trim the adapters. To prevent reaching memory limit, the porechop was run on each individual fastq files instead of on compressed fastq files:
+In addition, porechop was used to trim the adapters. To prevent reaching memory limit, the porechop was run on each individual fastq files instead of on compressed fastq files using perl:
 
 ```
 #!/usr/bin/perl
@@ -42,7 +42,6 @@ foreach $file (@ARGV){
 }
 porechop.pl (END)
 ```
-
 
 |table|one|two|
 |-----|---|---|
