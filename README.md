@@ -1,9 +1,9 @@
 ## Dana Bao - Summer Research GitHub Repository
 
-Nanopore Chuckling Goat Analysis
+**Nanopore Chuckling Goat Analysis**
 
 The fastq file was obtained directly from the PromethION computer. 
-Given the number of files, the fastq files are decompressed, combined and recompressed into 4 barcode files using:
+Given the number of files, the fastq files are decompressed, combined and recompressed into 4 barcode files:
 
 ```
 cat barcode01/*.fastq.gz > barcode1.fastq.gz
@@ -25,9 +25,9 @@ where X represents the number for the combined fastq file.
 * `--report` Return a summary report
 * `--confidence 0.5` Threshold for fraction of k-mers supporting the classification, otherwise considered unclassified
 
-The adapters are removed with super accuracy using raw signal on the PromethION computer.
+The adapters were removed with super accuracy using raw signal on the PromethION computer.
 
-
+In addition, porechop was used to trim the adapters. To prevent reaching memory limit, the porechop was run on each individual fastq files instead of on compressed fastq files: 
 
 
 
