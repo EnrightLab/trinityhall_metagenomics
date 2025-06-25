@@ -28,6 +28,11 @@ where X represents the number for the combined fastq file.
 * `--report`: Return a summary report
 * `--confidence 0.5`: Threshold for fraction of k-mers supporting the classification, otherwise considered unclassified
 
+The Kraken report was used to perform abundance estimation using Bracken: 
+```
+est_abundance.py -i barcode0X.kraken.report.txt -k kraken_db/database75mers.kmer_distrib -l S -t 10 -o barcode0X.bracken.txt
+```
+
 The adapters were removed with super accuracy using raw signal on the PromethION computer.
 
 In addition, porechop was used to trim the adapters. To prevent reaching memory limit, the porechop was run on each individual fastq files instead of on compressed fastq files using perl:
