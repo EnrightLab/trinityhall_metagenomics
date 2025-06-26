@@ -18,7 +18,6 @@ kraken2 --db gtdb --gzip-compressed --threads 20 --output barcode0X.kraken.out -
 ```
 kraken2 --db kraken_db --gzip-compressed --threads 20 --output barcode0X.kraken.out --report barcode0X.kraken.report.txt --confidence 0.5 barcodeX.fastq.gz
 ```
-where X represents the number for the combined fastq file.
 
 * `--db gtdb` or `--db kraken_db`: Use database gtdb/core_nt, which contains microbial sequences/full NCBI's database sequences
 * `--gzip-compressed`: Input reads are in gzip file
@@ -48,7 +47,6 @@ The Kraken report was used to perform abundance estimation using Bracken:
 ```
 est_abundance.py -i barcode0X.kraken.report.txt -k kraken_db/database75mers.kmer_distrib -l S -t 10 -o barcode0X.bracken.txt
 ```
-where X represents the number for the combined fastq file.
 
 Sample Bracken outputs are as follow:
 ```
@@ -74,13 +72,46 @@ wget https://data.ace.uq.edu.au/public/gtdb/data/releases/release207/207.0/bac12
 Then construct a full metadata file using `bac120` and `ar53` via python. As the metadata lack gtdb taxonomy id, species name are isolated instead to prepare for later mapping. Species names are extract from `gtdb_taxonomy`column:
 
 ```
+import pandas as pd
 
+bac_metadata = pd.read_csv("$PATH/bac120_metadata_r207.tsv", sep="\t")
+ar_metadata = pd.read_csv("$PATH/ar53_metadata_r207.tsv", sep="\t")
 
+metadata = pd.concat([bac_metadata, ar_metadata], ignore_index=True)
+metadata["s_name"]= (metadata["gtdb_taxonomy"].str.extract(r'(s__.+)$').fillna("").squeeze())
 
+metadata.to_csv("$PATH/all_microbes_metadata.tsv", sep="\t", index=False)
+```
 
+The full metadata is then used to map gtdb taxonomy id from Bracken output onto NCBI taxonomy id by corresponding species names via python:
+```
+import pandas as pd
 
+metadata = pd.read_csv("$PATH/all_microbes_metadata.tsv", sep="\t", dtype={"ncbi_taxid":"Int64"})
+inputfile = input("Enter input bracken file full path:")
+input_df = pd.read_csv(inputfile, sep="\t")
 
+species_to_taxid = dict(zip(metadata["s_name"], metadata["ncbi_taxid"]))
+input_df['ncbi_taxid'] = input_df['name'].map(species_to_taxid)
 
+input_df["taxonomy_id"] = input_df["ncbi_taxid"]
+input_df = input_df.drop(columns=["ncbi_taxid"])
+input_df["taxonomy_id"] = input_df["taxonomy_id"].fillna(0).astype(int)
+
+outputfile = inputfile.replace(".bracken.txt", ".bracken.ncbi.txt")
+input_df.to_csv(outputfile, sep="\t", index=False)
+```
+
+The output `barcode0X.bracken.ncbi.txt` are used as input for generating Krona plot:
+```
+ktImportTaxonomy -t 2 -m 6 -o barcode0X.html barcode0X.bracken.ncbi.txt
+```
+
+* `--t 2`: Use the 2nd column of Bracken output for taxonomy id search, which contains NCBI taxonomy id of the species
+* `--m 6`: Use the 6th column of Bracken output for abundance score, which contains `new_est_reads`, which is the bayesian restimation of abundance based on Kraken output
+
+Sample Krona Plot is as follow:
+!(file:///Users/hb676/Desktop/barcode01.html)
 
 The adapters were removed with super accuracy using raw signal on the PromethION computer. The new sequence files acquired were again recompressed into `bracodeX_super_trimmed.fastq.gz`, then handled similarly with Kraken and Bracken.
 
