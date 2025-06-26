@@ -130,7 +130,6 @@ foreach $file (@ARGV){
 }
 porechop.pl (END)
 ```
-<img width="1189" alt="barcode01" src="https://github.com/user-attachments/assets/acc0f220-8993-467f-bebe-c4b2d9002063" />
 
 |table|one|two|
 |-----|---|---|
