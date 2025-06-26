@@ -111,7 +111,7 @@ ktImportTaxonomy -t 2 -m 6 -o barcode0X.html barcode0X.bracken.ncbi.txt
 * `--m 6`: Use the 6th column of Bracken output for abundance score, which contains `new_est_reads`, which is the bayesian restimation of abundance based on Kraken output
 
 Sample Krona Plot is as follow:
-!(file:///Users/hb676/Desktop/barcode01.html)
+!(/Users/hb676/Desktop/barcode01.html)
 
 The adapters were removed with super accuracy using raw signal on the PromethION computer. The new sequence files acquired were again recompressed into `bracodeX_super_trimmed.fastq.gz`, then handled similarly with Kraken and Bracken.
 
