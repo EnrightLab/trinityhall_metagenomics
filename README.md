@@ -65,6 +65,22 @@ s__Lactobacillus acetotolerans  139478  S       35      0       35      0.00001
 s__Lentilactobacillus kefiri    157081  S       694001  17134   711135  0.17849
 s__Lentilactobacillus parakefiri        166863  S       7826    0       7826    0.00196
 ```
+For abundance visualization, Krona is used. However, the Krona in-built taxonomy follows NCBI taxonomy id instead of gtdb taxnomy id, so the conversion between the two is required. Using version r207 of gtdb release as an example, first download the bacterial and archaean metadata:
+
+```
+wget https://data.ace.uq.edu.au/public/gtdb/data/releases/release207/207.0/ar53_metadata_r207.tar.gz
+wget https://data.ace.uq.edu.au/public/gtdb/data/releases/release207/207.0/bac120_metadata_r207.tar.gz
+```
+Then construct a full metadata file using `bac120` and `ar53` via python. As the metadata lack gtdb taxonomy id, species name are isolated instead to prepare for later mapping. Species names are extract from `gtdb_taxonomy`column:
+
+```
+
+
+
+
+
+
+
 
 The adapters were removed with super accuracy using raw signal on the PromethION computer. The new sequence files acquired were again recompressed into `bracodeX_super_trimmed.fastq.gz`, then handled similarly with Kraken and Bracken.
 
