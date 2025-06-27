@@ -63,13 +63,13 @@ s__Lactobacillus acetotolerans  139478  S       35      0       35      0.00001
 s__Lentilactobacillus kefiri    157081  S       694001  17134   711135  0.17849
 s__Lentilactobacillus parakefiri        166863  S       7826    0       7826    0.00196
 ```
-For abundance visualization, Krona is used. However, the Krona in-built taxonomy follows NCBI taxonomy id instead of gtdb taxnomy id, so the conversion between the two is required. Using version r207 of gtdb release as an example, first download the bacterial and archaean metadata:
+For abundance visualization, Krona was used. However, the Krona in-built taxonomy uses NCBI taxonomy id instead of gtdb taxnomy id, so the conversion between the two was required for bracken outputs generated against gtdb database. Bracken outputs derived from searching against core_nt uses NCBI taxonomy id therefore do not need conversion. Using version r207 of gtdb release as an example, first download the bacterial and archaean metadata:
 
 ```
 wget https://data.ace.uq.edu.au/public/gtdb/data/releases/release207/207.0/ar53_metadata_r207.tar.gz
 wget https://data.ace.uq.edu.au/public/gtdb/data/releases/release207/207.0/bac120_metadata_r207.tar.gz
 ```
-Then construct a full metadata file using `bac120` and `ar53` via python. As the metadata lack gtdb taxonomy id, species name are isolated instead to prepare for later mapping. Species names are extract from `gtdb_taxonomy`column:
+Then construct a full metadata file using `bac120` and `ar53` via python. As the metadata lack gtdb taxonomy id, species name were isolated instead to prepare for later mapping. Species names were extract from `gtdb_taxonomy`column:
 
 ```
 import pandas as pd
@@ -83,7 +83,7 @@ metadata["s_name"]= (metadata["gtdb_taxonomy"].str.extract(r'(s__.+)$').fillna("
 metadata.to_csv("$PATH/all_microbes_metadata.tsv", sep="\t", index=False)
 ```
 
-The full metadata is then used to map gtdb taxonomy id from Bracken output onto NCBI taxonomy id by corresponding species names via python:
+The full metadata was then used to map gtdb taxonomy id from Bracken output onto NCBI taxonomy id by corresponding species names via python:
 ```
 import pandas as pd
 
@@ -102,7 +102,7 @@ outputfile = inputfile.replace(".bracken.txt", ".bracken.ncbi.txt")
 input_df.to_csv(outputfile, sep="\t", index=False)
 ```
 
-The output `barcode0X.bracken.ncbi.txt` are used as input for generating Krona plot:
+The output `barcode0X.bracken.ncbi.txt`, along with `barcode0X.bracken.core.txt`, were used as input for generating Krona plot:
 ```
 ktImportTaxonomy -t 2 -m 6 -o barcode0X.html barcode0X.bracken.ncbi.txt
 ```
