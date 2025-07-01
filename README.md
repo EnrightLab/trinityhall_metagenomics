@@ -113,6 +113,11 @@ ktImportTaxonomy -t 2 -m 6 -o barcode0X.html barcode0X.bracken.ncbi.txt
 Sample Krona Plot is as follow:
 <img width="1189" alt="barcode01" src="https://github.com/user-attachments/assets/a16007aa-3229-4ffa-8671-829f3c6b192c" />
 
+Analysis from Krona plot identified 5 major species of microbial organisms in the samples. They were Lactobacillus kefiranofaciens, Lactobacillus helveticus, Lentilactobacillus kefiri, Kluyeveromyces marxianus and Pichia kudriavzevii, respectively. 
+In order to further analyze these species, their specific genome sequences needs to be created using nanopore reads. To filter out reads of interest, a python script `find_species_hits.py` was used to identify read ids corresponding to the species of interest from kraken output file, then filtering out the corresponding sequence reads from the fastq file. This was done for all 4 samples, and the resulting sequences for each species were combined into a fasta file.
+
+
+
 The adapters were removed with super accuracy using raw signal on the PromethION computer. The new sequence files acquired were again recompressed into `bracodeX_super_trimmed.fastq.gz`, then handled similarly with Kraken and Bracken.
 
 In addition, porechop was used to trim the adapters. To prevent reaching memory limit, the porechop was run on each individual fastq files instead of on compressed fastq files using perl:
