@@ -117,7 +117,13 @@ Analysis from Krona plot identified 5 major species of microbial organisms in th
 
 In order to further analyze these species, their specific genome sequences needs to be created using nanopore reads. To filter out reads of interest, a python script `find_species_hits.py` was used to identify read ids corresponding to the species of interest from kraken output file, then filtering out the corresponding sequence reads from the fastq file. This was done for all 4 samples, and the resulting sequences for each species were combined into a fasta file.
 
-
+Reference genomes were downloaded from Genbank: 
+|Species|Genbank Accession|
+|Lactobacillus kefiranofaciens strain 1207|NZ_CP061341|
+|Lactobacillus helveticus strain TCI357| NZ_CP151471 |
+|Lentilactobacillus kefiri strain DH5| NZ_CP029971 |
+|Kluyveromyces marxianus DMKU3-1042| NC_036025 |
+|Pichia kudriavzevii| NC_042506 |
 
 The adapters were removed with super accuracy using raw signal on the PromethION computer. The new sequence files acquired were again recompressed into `bracodeX_super_trimmed.fastq.gz`, then handled similarly with Kraken and Bracken.
 
