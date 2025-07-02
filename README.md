@@ -126,7 +126,24 @@ Reference genomes were downloaded from Genbank:
 |Kluyveromyces marxianus DMKU3-1042       | NC_036025       |
 |Pichia kudriavzevii                      | NC_042506       |
 
-Alignment of metagenomic data to reference genomes is done through blast. To produce desired output format, `blaster.py` was used. Sample output is as follow:
+Alignment of metagenomic data to reference genomes is done through blast. To produce desired output format, `blaster.py` was used. Sample output is as follow: 
+
+```
+6b434867-92f3-46f4-91c3-60e25aa370fa    NZ_CP061341.1   100.000 70.85% [175 / 247]      2146803 2146629 71      245
+#
+#[aln]  CGGCTCAAGAAGGTAAAATCTTGCGAAATGGCTTGGCTACTGCAATCGTAGGTCGACCAAATGTGGGAAAATCATCCTTG
+#[aln]  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+#[aln]  CGGCTCAAGAAGGTAAAATCTTGCGAAATGGCTTGGCTACTGCAATCGTAGGTCGACCAAATGTGGGAAAATCATCCTTG
+#
+#[aln]  CTTAATTATTTAACGCAAAGTGATAAAGCAATTGTAACCGATGTCGCTGGAACTACGCGTGACACCTTGGAAGAATATGT
+#[aln]  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+#[aln]  CTTAATTATTTAACGCAAAGTGATAAAGCAATTGTAACCGATGTCGCTGGAACTACGCGTGACACCTTGGAAGAATATGT
+#
+#[aln]  ATCTGTAAAAGGCGT
+#[aln]  |||||||||||||||
+#[aln]  ATCTGTAAAAGGCGT
+#
+```
 
 The adapters were removed with super accuracy using raw signal on the PromethION computer. The new sequence files acquired were again recompressed into `bracodeX_super_trimmed.fastq.gz`, then handled similarly with Kraken and Bracken.
 
