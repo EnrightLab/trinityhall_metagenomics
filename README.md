@@ -119,6 +119,7 @@ In order to further analyze these species, their specific genome sequences needs
 
 Reference genomes were downloaded from Genbank: 
 |Species                                  |Genbank Accession|
+|-----------------------------------------|-----------------|
 |Lactobacillus kefiranofaciens strain 1207| NZ_CP061341     |
 |Lactobacillus helveticus strain TCI357   | NZ_CP151471     |
 |Lentilactobacillus kefiri strain DH5     | NZ_CP029971     |
