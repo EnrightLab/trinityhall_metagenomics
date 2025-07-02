@@ -126,6 +126,8 @@ Reference genomes were downloaded from Genbank:
 |Kluyveromyces marxianus DMKU3-1042       | NC_036025       |
 |Pichia kudriavzevii                      | NC_042506       |
 
+Alignment of metagenomic data to reference genomes is done through blast. To produce desired output format, `blaster.py` was used. Sample output is as follow:
+
 The adapters were removed with super accuracy using raw signal on the PromethION computer. The new sequence files acquired were again recompressed into `bracodeX_super_trimmed.fastq.gz`, then handled similarly with Kraken and Bracken.
 
 In addition, porechop was used to trim the adapters. To prevent reaching memory limit, the porechop was run on each individual fastq files instead of on compressed fastq files using perl:
