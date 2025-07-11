@@ -19,6 +19,9 @@ blast_cmd_template = (
     "-word_size 8 -evalue 1e-5 -num_threads 12"
 )
 
+QUERY_PATTERN = re.compile(r"^# Query: (\S+)")
+HITS_PATTERN = re.compile(r"^# (\d+) hits found")
+
 with open("targets.txt", "r") as infile:
     for line in infile:
         line = line.strip()
@@ -32,8 +35,10 @@ with open("targets.txt", "r") as infile:
         seen = set()
         total_hits = 0
         total_seqs = 0
+        line_count = 0
+        current_time = None
 
-        with open(f"{species_file}.blasthits.txt", "w") as outfile:
+        with open(f"{species_file}.blasthits.txt", "w", buffering=1024*1024) as outfile:
             process = subprocess.Popen(blast_cmd, shell=True, stdout=subprocess.PIPE, text=True)
             current_query = None
             for line in process.stdout:
@@ -41,12 +46,21 @@ with open("targets.txt", "r") as infile:
                 if not line:
                     continue
 
-                query_match = re.match(r"^# Query: (\S+)", line)
+                line_count += 1
+                if line_count % 100000 == 0:
+                    last_time = current_time if current_time else blast_start
+                    current_time = time.time()
+                    elapsed = current_time - blast_start
+                    difference = current_time - last_time
+                    print(f"  Processed {line_count} lines in {elapsed:.2f} seconds, last 100k reads took {difference} seconds")
+                    print(f"length of seen is {len(seen)}")
+
+                query_match = QUERY_PATTERN.match(line)
                 if query_match:
                     current_query = query_match.group(1)
                     continue
 
-                hits_match = re.match(r"^# (\d+) hits found", line)
+                hits_match = HITS_PATTERN.match(line)
                 if hits_match:
                     if int(hits_match.group(1)) == 0:
                         outfile.write(f"{current_query}\tNo Hits\tNA\n")
