@@ -1,4 +1,4 @@
-## Dana Bao - Summer Research GitHub Repository
+![Lactobacillus_kefiranofaciens_circos](https://github.com/user-attachments/assets/90f12962-a428-4d5a-9241-c12a102eec3c)## Dana Bao - Summer Research GitHub Repository
 
 **Nanopore Chuckling Goat Analysis**
 
@@ -180,6 +180,8 @@ circos -conf circos.conf
 ```
 
 Sample Circos plots are as follow:
+![Lactobacillus_kefiranofaciens_circos](https://github.com/user-attachments/assets/d6f9cd17-5996-4fd0-8585-336a4b06c1c1)
+
 
 The adapters were removed with super accuracy using raw signal on the PromethION computer. The new sequence files acquired were again recompressed into `bracodeX_super_trimmed.fastq.gz`, then handled similarly with Kraken and Bracken.
 
