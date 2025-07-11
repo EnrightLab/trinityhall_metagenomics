@@ -3,7 +3,7 @@
 **Nanopore Chuckling Goat Analysis**
 
 The fastq file was obtained directly from the PromethION computer. 
-Given the number of files, the fastq files are decompressed, combined and recompressed into 4 barcode files:
+Given the number of files, the fastq files were decompressed, combined and recompressed into 4 barcode files:
 
 ```
 cat barcode0X/*.fastq.gz > barcodeX.fastq.gz
@@ -117,6 +117,10 @@ Analysis from Krona plot identified 5 major species of microbial organisms in th
 
 In order to further analyze these species, their specific genome sequences needs to be created using nanopore reads. To filter out reads of interest, a python script `find_species_hits.py` was used to identify read ids corresponding to the species of interest from kraken output file, then filtering out the corresponding sequence reads from the fastq file. This was done for all 4 samples, and the resulting sequences for each species were combined into a fasta file.
 
+```
+python find_species_hits.py barcode0X.kraken.core.out
+```
+
 Reference genomes were downloaded from Genbank: 
 |Species                                  |Genbank Accession|
 |-----------------------------------------|-----------------|
@@ -126,7 +130,14 @@ Reference genomes were downloaded from Genbank:
 |Kluyveromyces marxianus DMKU3-1042       | NC_036025       |
 |Pichia kudriavzevii                      | NC_042506       |
 
-Alignment of metagenomic data to reference genomes is done through blast. To produce desired output format, `blaster.py` was used. Sample output is as follow: 
+Alignment of metagenomic data to reference genomes is done through blast. To produce desired output format, `blaster.py` was used:
+
+```
+python blaster.py
+```
+The code requires file `targets.txt` containing species name and corresponding database listed in tsv format to run. 
+
+Sample output is as follow: 
 
 ```
 6b434867-92f3-46f4-91c3-60e25aa370fa    NZ_CP061341.1   100.000 70.85% [175 / 247]      2146803 2146629 71      245
@@ -144,6 +155,31 @@ Alignment of metagenomic data to reference genomes is done through blast. To pro
 #[aln]  ATCTGTAAAAGGCGT
 #
 ```
+
+To visualize the comparison between the sequenced strain and reference genome, output from Blast was used to generate Circos plots. Files that are necessary for Circos was created based on Blast output using `make_karyotype_gb.py`. GC skew data was generated using `gcskew.py` (Jennifer Lu, jlu26@jhmi.edu). 
+
+```
+python gcskew.py -i species_name_reference_genome.fna -o species_name.skew.txt
+```
+```
+make_karyotype_gb.py species_name.gbff species_name.metagenomic.fasta.blasthits.txt species_name.skew.txt
+```
+
+As both `label_forward.txt` and `label_reverse.txt` contain annotations with space and would thus cause Circos script to fail, spaces were substituted with underscores using:
+
+```
+sed -i 's/ /_/g' labels_forward.txt
+```
+```
+sed -i 's/ /_/g' labels_reverse.txt
+```
+
+The files were then passed to Circos using `circos.conf` as the configuration reference. 
+```
+circos -conf circos.conf
+```
+
+Sample Circos plots are as follow:
 
 The adapters were removed with super accuracy using raw signal on the PromethION computer. The new sequence files acquired were again recompressed into `bracodeX_super_trimmed.fastq.gz`, then handled similarly with Kraken and Bracken.
 
