@@ -159,7 +159,7 @@ Sample output is as follow:
 To visualize the comparison between the sequenced strain and reference genome, output from Blast was used to generate Circos plots. Files that are necessary for Circos was created based on Blast output using `make_karyotype_gb.py`. GC skew data was generated using `gcskew.py` (Jennifer Lu, jlu26@jhmi.edu). 
 
 ```
-python gcskew.py -i species_name_reference_genome.fna -o species_name.skew.txt
+python gcskew.py -i species_name_reference_genome.fna -o species_name_skew.txt
 ```
 ```
 make_karyotype_gb.py species_name.gbff species_name.metagenomic.fasta.blasthits.txt species_name.skew.txt
