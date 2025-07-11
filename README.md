@@ -1,4 +1,4 @@
-![Lactobacillus_kefiranofaciens_circos](https://github.com/user-attachments/assets/90f12962-a428-4d5a-9241-c12a102eec3c)## Dana Bao - Summer Research GitHub Repository
+## Dana Bao - Summer Research GitHub Repository
 
 **Nanopore Chuckling Goat Analysis**
 
