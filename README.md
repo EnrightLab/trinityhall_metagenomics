@@ -106,6 +106,9 @@ The output `barcode0X.bracken.ncbi.txt`, along with `barcode0X.bracken.core.txt`
 ```
 ktImportTaxonomy -t 2 -m 6 -o barcode0X.html barcode0X.bracken.ncbi.txt
 ```
+```
+ktImportTaxonomy -t 2 -m 6 -o barcode0X.html barcode0X.bracken.core.txt
+```
 
 * `--t 2`: Use the 2nd column of Bracken output for taxonomy id search, which contains NCBI taxonomy id of the species
 * `--m 6`: Use the 6th column of Bracken output for abundance score, which contains `new_est_reads`, which is the bayesian restimation of abundance based on Kraken output
