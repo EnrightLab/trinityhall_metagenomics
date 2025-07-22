@@ -47,6 +47,11 @@ The Kraken report was used to perform abundance estimation using Bracken:
 ```
 est_abundance.py -i barcode0X.kraken.report.txt -k kraken_db/database75mers.kmer_distrib -l S -t 10 -o barcode0X.bracken.txt
 ```
+* `--i`: Input kraken report file name
+* `--k`: The k-mer distribution file used for the previous kraken analysis
+* `--l S`: Species level abundance estimation
+* `--t 10`: Use 10 cpus per job
+* `--o`: Output bracken file name
 
 Sample Bracken outputs are as follow:
 ```
@@ -158,6 +163,15 @@ Sample output is as follow:
 #[aln]  ATCTGTAAAAGGCGT
 #
 ```
+
+Despite not implemented in this project, if higher processing speed is required, minimap2 could be used instead of blast to align the read to the reference genome, which is more efficient when applied to long Oxford Nanopore reads. 
+
+```
+minimap2 -a -t 10 -x map-ont species_name_reference_genome.fna species_name.metagenomic.fasta > species_name.minimap2.sam
+```
+* `--a`: Output as SAM format, default is PAF format
+* `--t 10`: Use 10 cpus per job
+* `--x map-ont`: Specifies input as Oxford Nanopore reads
 
 To visualize the comparison between the sequenced strain and reference genome, output from Blast was used to generate Circos plots. Files that are necessary for Circos was created based on Blast output using `make_karyotype_gb.py`. GC skew data was generated using `gcskew.py` (Jennifer Lu, jlu26@jhmi.edu). 
 
