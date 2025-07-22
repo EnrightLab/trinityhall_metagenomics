@@ -234,4 +234,8 @@ est_abundance.py -i barcode13.kraken.microb.report.txt -k /mnt/cgs-fs7.hmg.path.
 ```
 * `--l G`: Genus level abundance estimation
 
-To visualize the abundance level for both species and genus level, the data acquired at 0.1 confidence level was plotted as stacked barchart for all 4 samples using python script `abundance_plot.py`. Sample output plot is as follow:
+To visualize the abundance level for both species and genus level, the data acquired at 0.1 confidence level was plotted as stacked barchart for all 4 samples using python script `abundance_plot.py`. Sample output plots are as follow:
+
+<img width="6291" height="2953" alt="top20_species" src="https://github.com/user-attachments/assets/3b0283d3-928d-4549-a80f-c41104d9e4a7" />
+
+<img width="6128" height="2953" alt="top20_genus" src="https://github.com/user-attachments/assets/5c846ab9-5e75-4d22-9e2a-c34fae32a5e7" />
