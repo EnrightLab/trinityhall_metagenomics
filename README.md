@@ -241,22 +241,22 @@ To visualize the abundance level for both species and genus level, the data acqu
 <img width="6128" height="2953" alt="top20_genus" src="https://github.com/user-attachments/assets/5c846ab9-5e75-4d22-9e2a-c34fae32a5e7" />
 
 To quantify the species diversity of each sample and compare their relative abundance, Chao1 index, Shannon index and Simpson index were calculated from the Kraken2 report using direct read numbers for each species (S) or strain/subspecies (S1). 
-The Chao1 index is calculated as:
+The Chao1 index is calculated as:  
 $$
-S_chao1 = S_obs + F_1^2 / 2F_2
-$$
-where $S_obs$ is the observed species number, $F_1$ is the number of species observed only once, and $F_2$ is the number of species observed twice. 
+S_{chao1} = S_{obs} + \frac{F_1^2}{2F_2}
+$$  
+where $S_{obs}$ is the observed species number, $F_1$ is the number of species observed only once, and $F_2$ is the number of species observed twice.
 
-The Shannon index is calculated as:
+The Shannon index is calculated as:  
 $$
 H' = -\sum_{i=1}^{S} p_i \log p_i
-$$
-where $p_i$ is the percentage of individuals belonging to species i
+$$  
+where $p_i$ is the percentage of individuals belonging to species $i$.
 
-The Simpson index is calculated as:
+The Simpson index is calculated as:  
 $$
-D = -\sum_{i=1}^{S} p_i^2
-$$
-where $p_i$ is the percentage of individuals belonging to species i
+D = \sum_{i=1}^{S} p_i^2
+$$  
+where $p_i$ is the percentage of individuals belonging to species $i$.
 
 Script used for calculation and plotting of indexes may be found in diversity_index_calculation.ipynb. Output plots are as follow:
