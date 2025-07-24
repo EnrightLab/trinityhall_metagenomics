@@ -167,7 +167,7 @@ Sample output is as follow:
 Despite not implemented in this project, if higher processing speed is required, minimap2 could be used instead of blast to align the read to the reference genome, which is more efficient when applied to long Oxford Nanopore reads. 
 
 ```
-minimap2 -a -t 10 -x map-ont species_name_reference_genome.fna species_name.metagenomic.fasta > species_name.minimap2.sam
+minimap2 -t 10 -a -x map-ont species_name_reference_genome.fna species_name.metagenomic.fasta > species_name.minimap2.sam
 ```
 * `--a`: Output as SAM format, default is PAF format
 * `--t 10`: Use 10 cpus per job
