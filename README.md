@@ -226,7 +226,7 @@ porechop.pl (END)
 
 3 soil samples acquired in Trinity Hall, Cambridge and 1 supersoil sample was analyzed in this experiment. 
 
-Similar to what is done with Chuckling Goat, the data were first processed via Kraken2 to acquire mapping against gtdb database. The confidence level was tested between 0.1 and 0.5 at an incremented step of 0.1, and while higher confidence level yield high amount of unclassified reads, downstream Bracken analysis and Krona plots produces similar result between 0.2 and 0.5 confidence level. Sample test results could be found at `barcode_confidence13.microb.html`. 
+Similar to what is done with Chuckling Goat, the data were first processed via Kraken2 to acquire mapping against gtdb database. The confidence level was tested between 0.1 and 0.5 at an incremented step of 0.1, and while higher confidence level yield high amount of unclassified reads, downstream Bracken analysis and Krona plots produces similar result between 0.2 and 0.5 confidence level. Confidence level test results could be found in `barcode13_confidence.microb.html`, result for all 4 soil samples analyzed at confidence level 0.2 could be found in `barcode_confidence02.microb.html`. 
 
 Genus level abundance was also analyzed in this study using Bracken:
 ```
