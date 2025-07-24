@@ -230,9 +230,9 @@ est_abundance.py -i barcode13.kraken.microb.report.txt -k /mnt/cgs-fs7.hmg.path.
 ```
 * `--l G`: Genus level abundance estimation
 
-To visualize the abundance level for both species and genus level, the data acquired at 0.1 confidence level was plotted as stacked barchart for all 4 samples using python script `abundance_plot.py`. Sample output plots are as follow:
-<img width="6291" height="2953" alt="top20_species" src="https://github.com/user-attachments/assets/2ba378dd-c6f1-4b32-80e0-976ba080d6e6" />
-<img width="6129" height="2953" alt="top20_genus" src="https://github.com/user-attachments/assets/24b158e9-80e0-4184-8d78-c43951ec2277" />
+To visualize the abundance level for both species and genus level, the data acquired at 0.1 confidence level was plotted as stacked barchart for all 4 samples using python script `abundance_plot.py`. Output plots are as follow:
+<img width="6291" height="2953" alt="top20_species_confidence02" src="https://github.com/user-attachments/assets/0dc4233f-5749-4cf9-acac-76ab1e34b286" />
+<img width="6129" height="2953" alt="top20_genus_confidence02" src="https://github.com/user-attachments/assets/0953abb0-7130-4a41-9ce0-ed930ad41829" />
 To quantify the species diversity of each sample and compare their relative abundance, Chao1 index, Shannon index and Simpson index were calculated from the Kraken2 report using direct read numbers for each species (S) or strain/subspecies (S1). 
 The Chao1 index is calculated as:  
 $S_{chao1} = S_{obs} + \frac{F_1^2}{2F_2}$  
