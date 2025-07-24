@@ -218,10 +218,6 @@ foreach $file (@ARGV){
 porechop.pl (END)
 ```
 
-|table|one|two|
-|-----|---|---|
-|a    | b | d |
-
 **Nanopore Soil Analysis**
 
 3 soil samples acquired in Trinity Hall, Cambridge and 1 supersoil sample was analyzed in this experiment. 
@@ -251,9 +247,9 @@ $D = \sum_{i=1}^{S} p_i^2$
 where $p_i$ is the percentage of individuals belonging to species $i$.
 
 Script used for calculation and plotting of indexes may be found in diversity_index_calculation.ipynb. Output plots are as follow:
-<img width="1708" height="1172" alt="chao1" src="https://github.com/user-attachments/assets/3f0f3b2c-96b0-466f-b56b-36b9226fe23f" />
-<img width="1668" height="1172" alt="shannon" src="https://github.com/user-attachments/assets/f50de796-40d0-4bfb-baac-f9db1d60a920" />
-<img width="1694" height="1172" alt="simpson" src="https://github.com/user-attachments/assets/c40a09ff-fffa-4e71-a944-f34a39c88bc9" />
 
+<img width="1682" height="1172" alt="chao1_confidence02" src="https://github.com/user-attachments/assets/099418c2-2aac-40e4-a8e4-5b9ef6078771" />
+<img width="1641" height="1172" alt="shannon_confidence02" src="https://github.com/user-attachments/assets/96b0d849-54fe-48ef-bcd6-c524a407a145" />
+<img width="1694" height="1172" alt="simpson_confidence02" src="https://github.com/user-attachments/assets/e575fb32-57b2-418f-9200-61a12f0d3932" />
 
 
