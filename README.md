@@ -188,7 +188,7 @@ circos -conf circos.conf
 ```
 
 Sample Circos plots are as follow:
-<img width="1125" height="1125" alt="Lactobacillus_kefiranofaciens_circos" src="https://github.com/user-attachments/assets/07c05716-f79d-4dbe-bf38-f3c34fb9a6b8" />
+<img width="843" height="843" alt="Lactobacillus_kefiranofaciens_circos" src="https://github.com/user-attachments/assets/07c05716-f79d-4dbe-bf38-f3c34fb9a6b8" />
 
 
 For higher processing speed and visualization via Integrative Genomics Viewer, minimap2 was also used to align the read to the reference genome, which is more efficient when applied to long Oxford Nanopore reads. 
