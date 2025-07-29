@@ -164,15 +164,6 @@ Sample output is as follow:
 #
 ```
 
-Despite not implemented in this project, if higher processing speed is required, minimap2 could be used instead of blast to align the read to the reference genome, which is more efficient when applied to long Oxford Nanopore reads. 
-
-```
-minimap2 -t 10 -a -x map-ont species_name_reference_genome.fna species_name.metagenomic.fasta > species_name.minimap2.sam
-```
-* `--a`: Output as SAM format, default is PAF format
-* `--t 10`: Use 10 cpus per job
-* `--x map-ont`: Specifies input as Oxford Nanopore reads
-
 To visualize the comparison between the sequenced strain and reference genome, output from Blast was used to generate Circos plots. Files that are necessary for Circos was created based on Blast output using `make_karyotype_gb.py`. GC skew data was generated using `gcskew.py` (Jennifer Lu, jlu26@jhmi.edu). 
 
 ```
@@ -199,6 +190,30 @@ circos -conf circos.conf
 Sample Circos plots are as follow:
 ![Lactobacillus_kefiranofaciens_circos](https://github.com/user-attachments/assets/d6f9cd17-5996-4fd0-8585-336a4b06c1c1)
 
+For higher processing speed and visualization via Integrative Genomics Viewer, minimap2 was also used to align the read to the reference genome, which is more efficient when applied to long Oxford Nanopore reads. 
+
+```
+minimap2 -t 10 -a -x map-ont species_name_reference_genome.fna species_name.metagenomic.fasta > species_name.minimap2.sam
+```
+* `--a`: Output as SAM format, default is PAF format
+* `--t 10`: Use 10 cpus per job
+* `--x map-ont`: Specifies input as Oxford Nanopore reads
+
+For visualization using IGV, binary bam files instead of sam files were necessary. This is created using Samtools:
+
+```
+samtools view -Sb species_name.minimap2.sam > species_name.bam
+```
+
+This produced unsorted bam file without indexing. To create sorted, indexed bam file for IGV, samtools were again used:
+
+```
+samtools sort -o species_name.sorted.bam species_name.bam
+```
+```
+samtools index species_name.sorted.bam
+```
+This creates `species_name.sorted.bam.bai` index file, which allow IGV to locate the alignments in specific regions. `species_name_reference_genome.fna`, `species_name.sorted.bam` and `species_name.sorted.bam.bai` are all loaded into IGV, with sample visualization region as follow:
 
 The adapters were removed with super accuracy using raw signal on the PromethION computer. The new sequence files acquired were again recompressed into `bracodeX_super_trimmed.fastq.gz`, then handled similarly with Kraken and Bracken.
 
