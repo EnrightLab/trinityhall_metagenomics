@@ -214,7 +214,7 @@ samtools sort -o species_name.sorted.bam species_name.bam
 samtools index species_name.sorted.bam
 ```
 This creates `species_name.sorted.bam.bai` index file, which allow IGV to locate the alignments in specific regions. `species_name_reference_genome.fna`, `species_name.sorted.bam` and `species_name.sorted.bam.bai` are all loaded into IGV, with sample visualization region as follow:
-
+<img width="1367" height="808" alt="Screenshot 2025-07-29 at 11 20 30" src="https://github.com/user-attachments/assets/a7710b32-379d-46fa-b5b7-38318d4f2cc8" />
 The adapters were removed with super accuracy using raw signal on the PromethION computer. The new sequence files acquired were again recompressed into `bracodeX_super_trimmed.fastq.gz`, then handled similarly with Kraken and Bracken.
 
 In addition, porechop was used to trim the adapters. To prevent reaching memory limit, the porechop was run on each individual fastq files instead of on compressed fastq files using perl:
