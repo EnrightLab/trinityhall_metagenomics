@@ -247,7 +247,7 @@ est_abundance.py -i barcode13.kraken.microb.report.txt -k /mnt/cgs-fs7.hmg.path.
 * `--l G`: Genus level abundance estimation
 
 To visualize the abundance level for both species and genus level, the data acquired at 0.1 confidence level was plotted as stacked barchart for all 4 samples using python script `abundance_plot.ipynb`. Output plots are as follow:
-<img width="7864" height="3691" alt="top20_species_confidence02" src="https://github.com/user-attachments/assets/0d72864e-aec0-46da-bdc8-0cb59093ec41" />
+<img width="11796" height="5536" alt="top20_species_confidence02" src="https://github.com/user-attachments/assets/0d72864e-aec0-46da-bdc8-0cb59093ec41" />
 <img width="6129" height="2953" alt="top20_genus_confidence02" src="https://github.com/user-attachments/assets/c7a0efc1-6b85-4d45-ab3a-6eea4f5d3e61" />
 
 To quantify the species diversity of each sample and compare their relative abundance, Chao1 index, Shannon index and Simpson index were calculated from the Kraken2 report using direct read numbers for each species (S) or strain/subspecies (S1). 
