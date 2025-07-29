@@ -233,6 +233,7 @@ est_abundance.py -i barcode13.kraken.microb.report.txt -k /mnt/cgs-fs7.hmg.path.
 To visualize the abundance level for both species and genus level, the data acquired at 0.1 confidence level was plotted as stacked barchart for all 4 samples using python script `abundance_plot.py`. Output plots are as follow:
 <img width="6291" height="2953" alt="top20_species_confidence02" src="https://github.com/user-attachments/assets/0dc4233f-5749-4cf9-acac-76ab1e34b286" />
 <img width="6129" height="2953" alt="top20_genus_confidence02" src="https://github.com/user-attachments/assets/0953abb0-7130-4a41-9ce0-ed930ad41829" />
+
 To quantify the species diversity of each sample and compare their relative abundance, Chao1 index, Shannon index and Simpson index were calculated from the Kraken2 report using direct read numbers for each species (S) or strain/subspecies (S1). 
 The Chao1 index is calculated as:  
 $S_{chao1} = S_{obs} + \frac{F_1^2}{2F_2}$  
@@ -252,4 +253,8 @@ Script used for calculation and plotting of indexes may be found in diversity_in
 <img width="1641" height="1172" alt="shannon_confidence02" src="https://github.com/user-attachments/assets/96b0d849-54fe-48ef-bcd6-c524a407a145" />
 <img width="1694" height="1172" alt="simpson_confidence02" src="https://github.com/user-attachments/assets/e575fb32-57b2-418f-9200-61a12f0d3932" />
 
+Chao1 index indicates species richness as reflected by number of species and gives more weight to rare species. It can be interpreted from the plot that Sample 1 contains highest number of species, while Sample 4 contains the lowest. 
 
+Shannon index indicates species eveness. It can be interpreted from the plot that Sample 4 has the highest Shannon index, thus having the most even distribution between species. Sample 4 has the lowest index and therefore could have a skewed distribution. 
+
+Simpson index indicates dominance. The results agrees with Shannon index results, with Sample 4 having a low index and thus a low dominance, while Sample 2 having a high index and thus a high dominance of a few species. 
