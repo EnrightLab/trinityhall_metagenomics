@@ -264,9 +264,9 @@ where $p_i$ is the percentage of individuals belonging to species $i$.
 
 Script used for calculation and plotting of indexes may be found in diversity_index_calculation.ipynb. Output plots are as follow:
 
-<img width="1682" height="1172" alt="chao1_confidence02" src="https://github.com/user-attachments/assets/099418c2-2aac-40e4-a8e4-5b9ef6078771" />
-<img width="1641" height="1172" alt="shannon_confidence02" src="https://github.com/user-attachments/assets/96b0d849-54fe-48ef-bcd6-c524a407a145" />
-<img width="1694" height="1172" alt="simpson_confidence02" src="https://github.com/user-attachments/assets/e575fb32-57b2-418f-9200-61a12f0d3932" />
+<img width="841" height="586" alt="chao1_confidence02" src="https://github.com/user-attachments/assets/099418c2-2aac-40e4-a8e4-5b9ef6078771" />
+<img width="820" height="586" alt="shannon_confidence02" src="https://github.com/user-attachments/assets/96b0d849-54fe-48ef-bcd6-c524a407a145" />
+<img width="847" height="586" alt="simpson_confidence02" src="https://github.com/user-attachments/assets/e575fb32-57b2-418f-9200-61a12f0d3932" />
 
 Chao1 index indicates species richness as reflected by number of species and gives more weight to rare species. It can be interpreted from the plot that Sample 1 contains highest number of species, while Sample 4 contains the lowest. 
 
