@@ -119,7 +119,7 @@ ktImportTaxonomy -t 2 -m 6 -o barcode0X.html barcode0X.bracken.core.txt
 * `--m 6`: Use the 6th column of Bracken output for abundance score, which contains `new_est_reads`, which is the bayesian restimation of abundance based on Kraken output
 
 Sample Krona Plot is as follow:
-<img width="1189" alt="barcode01" src="https://github.com/user-attachments/assets/a16007aa-3229-4ffa-8671-829f3c6b192c" />
+<img width="892" alt="barcode01" src="https://github.com/user-attachments/assets/a16007aa-3229-4ffa-8671-829f3c6b192c" />
 
 Analysis from Krona plot identified 5 major species of microbial organisms in the samples. They were Lactobacillus kefiranofaciens, Lactobacillus helveticus, Lentilactobacillus kefiri, Kluyeveromyces marxianus and Pichia kudriavzevii, respectively. 
 
