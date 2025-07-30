@@ -282,7 +282,8 @@ Shannon index indicates species eveness. It can be interpreted from the plot tha
 Simpson index indicates dominance. The results agrees with Shannon index results, with Sample 4 having a low index and thus a low dominance, while Sample 2 having a high index and thus a high dominance of a few species. 
 
 To compare the species pattern across and between the 4 samples, t-SNE analysis was implemented in `t_SNE_analysis.ipynb`, the output plots are as follow:
-<img width="570" height="408" alt="t-SNE_Species_Pattern" src="https://github.com/user-attachments/assets/e47ad211-e618-4319-9204-cb292da20415" />
+
+<img width="855" height="612" alt="t-SNE_Species_Pattern" src="https://github.com/user-attachments/assets/e47ad211-e618-4319-9204-cb292da20415" />
 <img width="441" height="350" alt="t-SNE_Sample_Comparison" src="https://github.com/user-attachments/assets/4bb199e5-fae8-4bbf-9142-4b145e4134b1" />
 
 
