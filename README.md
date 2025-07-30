@@ -218,6 +218,12 @@ This creates `species_name.sorted.bam.bai` index file, which allow IGV to locate
 <img width="1367" height="808" alt="Screenshot 2025-07-29 at 11 20 30" src="https://github.com/user-attachments/assets/a7710b32-379d-46fa-b5b7-38318d4f2cc8" />
 The adapters were removed with super accuracy using raw signal on the PromethION computer. The new sequence files acquired were again recompressed into `bracodeX_super_trimmed.fastq.gz`, then handled similarly with Kraken and Bracken.
 
+SPAdes Genome Assembler was used to create a genome assembled from the nanopore reads for the specific strain of Lactobacillus kefiranofaciens. As SPAdes require quality score in fastq file for its assembly, a modified version of `find_species_hits.py` -- `find_species_hits_fastq.py` was used. 
+
+```
+python find_species_hits_fastq.py barcode0X.kraken.core.out
+```
+
 In addition, porechop was used to trim the adapters. To prevent reaching memory limit, the porechop was run on each individual fastq files instead of on compressed fastq files using perl:
 
 ```
@@ -274,3 +280,5 @@ Chao1 index indicates species richness as reflected by number of species and giv
 Shannon index indicates species eveness. It can be interpreted from the plot that Sample 4 has the highest Shannon index, thus having the most even distribution between species. Sample 4 has the lowest index and therefore could have a skewed distribution. 
 
 Simpson index indicates dominance. The results agrees with Shannon index results, with Sample 4 having a low index and thus a low dominance, while Sample 2 having a high index and thus a high dominance of a few species. 
+
+To compare the species pattern across and between the 4 samples, t-SNE analysis was implemented in `t_SNE_analysis.ipynb`, the output plots are as follow:
