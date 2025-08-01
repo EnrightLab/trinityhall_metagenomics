@@ -218,27 +218,18 @@ This creates `species_name.sorted.bam.bai` index file, which allow IGV to locate
 <img width="1367" height="808" alt="Screenshot 2025-07-29 at 11 20 30" src="https://github.com/user-attachments/assets/a7710b32-379d-46fa-b5b7-38318d4f2cc8" />
 The adapters were removed with super accuracy using raw signal on the PromethION computer. The new sequence files acquired were again recompressed into `bracodeX_super_trimmed.fastq.gz`, then handled similarly with Kraken and Bracken.
 
-SPAdes Genome Assembler was used to create a genome assembled from the nanopore reads for the specific strain of Lactobacillus kefiranofaciens. As SPAdes require quality score in fastq file for its assembly, a modified version of `find_species_hits.py` -- `find_species_hits_fastq.py` was used. 
+Miniasm Genome Assembler was used to create a genome assembled from the nanopore reads for the specific strain of Lactobacillus kefiranofaciens. As Miniasm require quality score in fastq file for its assembly, a modified version of `find_species_hits.py` -- `find_species_hits_fastq.py` was used:
 
 ```
 python find_species_hits_fastq.py barcode0X.kraken.core.out
 ```
 
-In addition, porechop was used to trim the adapters. To prevent reaching memory limit, the porechop was run on each individual fastq files instead of on compressed fastq files using perl:
+In addition, as Miniasm only constructs the graph and do not align reads, minimap2 is needed to generate a paf file containing the overlaps between each reads. This is done by aligning the raw read files against itself:
 
 ```
-#!/usr/bin/perl
-
-foreach $file (@ARGV){
-
-
-        $output_file=$file;
-        $output_file=~ s/.fastq.gz/.chopped.fastq.gz/g;
-
-        system("/data/user_scripts/Porechop/porechop-runner.py -i $file -o $output_file");
-}
-porechop.pl (END)
+minimap2 -t 10 -x ava-ont species_name.metagenomic.fasta species_name.metagenomic.fasta > species_name_overlap.paf
 ```
+* `--x ava-ont`: Specifically designed for finding Oxford Nanopore reads overlap
 
 **Nanopore Soil Analysis**
 
