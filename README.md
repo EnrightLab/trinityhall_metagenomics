@@ -274,7 +274,8 @@ Simpson index indicates dominance. The results agrees with Shannon index results
 
 To compare the species pattern across and between the 4 samples, t-SNE analysis was implemented in `t_SNE_analysis.ipynb`, the output plots are as follow:
 
-<img width="855" height="612" alt="t-SNE_Species_Pattern" src="https://github.com/user-attachments/assets/e47ad211-e618-4319-9204-cb292da20415" />
-<img width="441" height="350" alt="t-SNE_Sample_Comparison" src="https://github.com/user-attachments/assets/4bb199e5-fae8-4bbf-9142-4b145e4134b1" />
+<img width="855" height="612" alt="t-SNE_Species_Pattern" src="https://github.com/user-attachments/assets/d23fb100-0a11-4226-a743-e31d6a55ddc6" />
+<img width="441" height="350" alt="t-SNE_Sample_Comparison" src="https://github.com/user-attachments/assets/81f3e833-d462-432d-866f-1c75555be36f" />
+
 
 
