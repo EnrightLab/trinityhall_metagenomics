@@ -190,6 +190,7 @@ circos -conf circos.conf
 Sample Circos plots are as follow:
 <img width="700" height="700" alt="Lactobacillus_kefiranofaciens_circos" src="https://github.com/user-attachments/assets/07c05716-f79d-4dbe-bf38-f3c34fb9a6b8" />
 
+Species and genus level fractional read abundance table was produced using `abundance_table.ipynb`.
 
 For higher processing speed and visualization via Integrative Genomics Viewer, minimap2 was also used to align the read to the reference genome, which is more efficient when applied to long Oxford Nanopore reads. 
 
@@ -216,7 +217,6 @@ samtools index species_name.sorted.bam
 ```
 This creates `species_name.sorted.bam.bai` index file, which allow IGV to locate the alignments in specific regions. `species_name_reference_genome.fna`, `species_name.sorted.bam` and `species_name.sorted.bam.bai` are all loaded into IGV, with sample visualization region as follow:
 <img width="1367" height="808" alt="Screenshot 2025-07-29 at 11 20 30" src="https://github.com/user-attachments/assets/a7710b32-379d-46fa-b5b7-38318d4f2cc8" />
-The adapters were removed with super accuracy using raw signal on the PromethION computer. The new sequence files acquired were again recompressed into `bracodeX_super_trimmed.fastq.gz`, then handled similarly with Kraken and Bracken.
 
 Miniasm Genome Assembler was used to create a genome assembled from the nanopore reads for the specific strain of Lactobacillus kefiranofaciens. As Miniasm require quality score in fastq file for its assembly, a modified version of `find_species_hits.py` -- `find_species_hits_fastq.py` was used:
 
@@ -277,5 +277,5 @@ To compare the species pattern across and between the 4 samples, t-SNE analysis 
 <img width="855" height="612" alt="t-SNE_Species_Pattern" src="https://github.com/user-attachments/assets/d23fb100-0a11-4226-a743-e31d6a55ddc6" />
 <img width="441" height="350" alt="t-SNE_Sample_Comparison" src="https://github.com/user-attachments/assets/81f3e833-d462-432d-866f-1c75555be36f" />
 
-Species and genus level fractional read abundance table was also produced using `abundance_table.ipynb`. Output csv files `species_abundance.csv` and `genus_abundance.csv` was provided. 
+Species and genus level fractional read abundance table was also produced using `abundance_table.ipynb`.
 
