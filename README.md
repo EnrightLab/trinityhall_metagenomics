@@ -278,6 +278,3 @@ To compare the species pattern across and between the 4 samples, t-SNE analysis 
 <img width="441" height="350" alt="t-SNE_Sample_Comparison" src="https://github.com/user-attachments/assets/81f3e833-d462-432d-866f-1c75555be36f" />
 
 Species and genus level fractional read abundance table was also produced using `abundance_table.ipynb`.
-
-aaa
-aa
