@@ -227,9 +227,43 @@ python find_species_hits_fastq.py barcode0X.kraken.core.out
 In addition, as Miniasm only constructs the graph and do not align reads, minimap2 is needed to generate a paf file containing the overlaps between each reads. This is done by aligning the raw read files against itself:
 
 ```
-minimap2 -t 10 -x ava-ont species_name.metagenomic.fasta species_name.metagenomic.fasta > species_name_overlap.paf
+minimap2 -t 10 -x ava-ont -k23 -w10 -f 0.001 -m 200 -N 4 species_name.metagenomic.fastq species_name.metagenomic.fastq | split -l 1000000000 - overlap_
 ```
-* `--x ava-ont`: Specifically designed for finding Oxford Nanopore reads overlap
+* `-t 10`: Using 10 threads
+* `-x ava-ont`: Specifically designed for finding Oxford Nanopore reads overlap
+* `-k23`: Uses k-mer size of 23
+* `-w10`: Uses window size of 10
+* `-f 0.001`: Drop top 0.1% most frequent minimizers (default is ~2e-4)
+* `-m 200`: Keep overlaps with chain score higher than 200
+* `-N 4`: Limit secondary alignments to 4 per primary chain for one query
+
+As there is significant amount of reads from the sample, to speed up the minimap2 process, k-mer size and window size was set to be higher than default. To reduce output alignment file size and prevent overflow of memory, higher filtering standards were used. 
+
+The outputs were then feed into Miniasm:
+```
+miniasm -f species_name.metagenomic.fastq overlap_* > species_name.assembly.gfa
+```
+
+The gfa file was then converted to fasta file for further polishing:
+```
+awk '/^S/{print ">"$2"\n"$3}' assembly.gfa > assembly.fasta
+```
+
+Racon were used to polish the assembly. As Racon accepts only all alignment data as one single file, the paf files were combined. In addition, to avoid slow polishing, only the top 1 alignment was kept for each query. To speed up the process, multiple threads were used for the sorting. 
+```
+SCR="/tmp/creation/path"
+mkdir -p "$SCR/tmp" "$SCR/filt1"
+export LC_ALL=C
+
+find . -maxdepth 1 -type f -name 'overlap_changed_*.paf' ! -name '*.xxh' -print0 \
+| xargs -0 -n1 -P 4 bash -lc '
+  f="$0"
+  out="'$SCR'/filt1/$(basename "$f").top1"
+  sort --parallel=4 -S 4G -T "'$SCR'/tmp" -k1,1 -k12,12nr "$f" \
+  | awk "!seen[\$1]++" > "$out"
+'
+```
+
 
 **Nanopore Soil Analysis**
 
@@ -268,7 +302,7 @@ Script used for calculation and plotting of indexes may be found in diversity_in
 
 Chao1 index indicates species richness as reflected by number of species and gives more weight to rare species. It can be interpreted from the plot that Sample 1 contains highest number of species, while Sample 4 contains the lowest. 
 
-Shannon index indicates species eveness. It can be interpreted from the plot that Sample 4 has the highest Shannon index, thus having the most even distribution between species. Sample 4 has the lowest index and therefore could have a skewed distribution. 
+Shannon index indicates species eveness. It can be interpreted from the plot that Sample 4 has the highest Shannon index, thus having the most even distribution between species. Sample 2 has the lowest index and therefore could have a skewed distribution. 
 
 Simpson index indicates dominance. The results agrees with Shannon index results, with Sample 4 having a low index and thus a low dominance, while Sample 2 having a high index and thus a high dominance of a few species. 
 
