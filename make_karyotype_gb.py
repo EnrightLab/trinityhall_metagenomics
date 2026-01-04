@@ -3,14 +3,9 @@ import sys
 import os
 import re
 
-def rand_col():
-    return tuple(random.randint(0, 255) for _ in range(3))
-
-
 def avg_array(coverage, a, b):
     total = sum(coverage[i] for i in range(a, b + 1))
     return total / (b - a + 1)
-
 
 def parse_locus_size(filepath):
     with open(filepath) as f:
@@ -26,7 +21,6 @@ def parse_location(loc_str):
         strand = "-"
         loc_str = re.sub(r"complement\((.*)\)", r"\1", loc_str)
 
-    # Handle join(...) or order(...)
     if loc_str.startswith("join") or loc_str.startswith("order"):
         loc_str = re.sub(r"(join|order)\((.*)\)", r"\2", loc_str)
 
