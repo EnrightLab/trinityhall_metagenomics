@@ -62,11 +62,11 @@ Community diversity of soil samples was quantified using Chao1, Shannon, and Sim
 This approach assumes that read counts are proportional to organism abundance. This is undermined by genome size differences and sequencing bias, but remains informative for relative comparisons between samples.  
 
 ## Limitations
-*Demultiplexing errors may lead to misassigned reads between barcodes
-*Taxonomic classification accuracy may be affected by Nanopore error rates and reference database completeness
-*Taxonomy mapping based on species name may introduce ambiguity
-*Abundance estimates based on read counts may not directly reflect true abundance
-*Strain-level assemblies may be fragmented and require further polishing and validation, ideally supported by short-read data
+* Demultiplexing errors may lead to misassigned reads between barcodes
+* Taxonomic classification accuracy may be affected by Nanopore error rates and reference database completeness
+* Taxonomy mapping based on species name may introduce ambiguity
+* Abundance estimates based on read counts may not directly reflect true abundance
+* Strain-level assemblies may be fragmented and require further polishing and validation, ideally supported by short-read data
 
 ## Pipeline Overview
-For a full description of the computational workflow, see `pipeline_overview.md`.  
+For a full description of the computational workflow, see [here](docs/pipeline_overview.md) for the pipeline overview.  
